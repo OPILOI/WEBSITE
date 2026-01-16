@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Code Generator</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="10">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: black;
+            color: white;
+            font-family: monospace;
+            font-size: 0;
+        }
+        #code {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="code"></div>
+    
+    <script>
+        // Generate a random 5-letter code
+        function generateCode() {
+            const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let code = '';
+            for (let i = 0; i < 5; i++) {
+                code += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return code;
+        }
+        
+        // Set the code on page load and every refresh
+        document.addEventListener('DOMContentLoaded', function() {
+            const codeElement = document.getElementById('code');
+            const newCode = generateCode();
+            codeElement.textContent = newCode;
+            
+            // Log for debugging (optional)
+            console.log('Generated code:', newCode);
+            console.log('Page will refresh in 10 seconds...');
+        });
+    </script>
+</body>
+</html>
