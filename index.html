@@ -6,12 +6,30 @@
     <title></title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { background-color: #000000; }
-        #code { display: none; }
+        body { 
+            background-color: #000000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            font-family: monospace;
+        }
+        #code {
+            color: #00ff00;
+            font-size: 24px;
+            word-break: break-all;
+            padding: 20px;
+            text-align: center;
+            background-color: #111111;
+            border: 1px solid #00ff00;
+            border-radius: 5px;
+            max-width: 90vw;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 <body>
-    <!-- Always has a code value - even before JavaScript loads -->
+    <!-- Visible code element that's always accessible -->
     <div id="code">A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4Y5z6A7B8C9D0E1F2G3H4</div>
     
     <script>
@@ -50,7 +68,7 @@
                 }
             });
             
-            // For debugging - can be removed
+            // For debugging
             console.log('Generated 64-char code:', code);
         })();
     </script>
