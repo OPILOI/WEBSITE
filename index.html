@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="10">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background-color: #000000;
+            overflow: hidden;
+            height: 100vh;
+            width: 100vw;
+        }
+        
+        #data {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id="data"></div>
+    
+    <script>
+        // Generate random 5-character code (letters only)
+        function generateCode() {
+            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            let code = '';
+            for (let i = 0; i < 5; i++) {
+                const randomIndex = Math.floor(Math.random() * letters.length);
+                code += letters.charAt(randomIndex);
+            }
+            return code;
+        }
+        
+        // Set the code in the hidden div
+        document.addEventListener('DOMContentLoaded', function() {
+            const code = generateCode();
+            document.getElementById('data').textContent = code;
+        });
+    </script>
+</body>
+</html>
