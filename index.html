@@ -2,48 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="10">
     <title></title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            background-color: #000000;
-            overflow: hidden;
-            height: 100vh;
-            width: 100vw;
-        }
-        
-        #data {
-            display: none;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: #000000; }
+        #code { display: none; }
     </style>
 </head>
 <body>
-    <div id="data"></div>
+    <!-- Always has a code value - even before JavaScript loads -->
+    <div id="code">A1b2C3d4E5f6G7h8I9j0K1l2M3n4O5p6Q7r8S9t0U1v2W3x4Y5z6A7B8C9D0E1F2G3H4</div>
     
     <script>
-        // Generate random 5-character code (letters only)
+        // Generate random 64-character code with mixed characters
         function generateCode() {
-            const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+            const charset = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+-=[]{}|;:,.<>?';
             let code = '';
-            for (let i = 0; i < 5; i++) {
-                const randomIndex = Math.floor(Math.random() * letters.length);
-                code += letters.charAt(randomIndex);
+            
+            // Ensure we always get exactly 64 characters
+            for (let i = 0; i < 64; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                code += charset.charAt(randomIndex);
             }
+            
             return code;
         }
         
-        // Set the code in the hidden div
-        document.addEventListener('DOMContentLoaded', function() {
+        // Set code immediately
+        (function() {
             const code = generateCode();
-            document.getElementById('data').textContent = code;
-        });
+            const codeElement = document.getElementById('code');
+            
+            // Update the code element
+            if (codeElement) {
+                codeElement.textContent = code;
+            }
+            
+            // Also update on DOM ready as backup
+            document.addEventListener('DOMContentLoaded', function() {
+                const domCodeElement = document.getElementById('code');
+                if (domCodeElement) {
+                    // Keep the already generated code
+                    if (!domCodeElement.textContent || domCodeElement.textContent.length !== 64) {
+                        domCodeElement.textContent = code;
+                    }
+                }
+            });
+            
+            // For debugging - can be removed
+            console.log('Generated 64-char code:', code);
+        })();
     </script>
 </body>
 </html>
