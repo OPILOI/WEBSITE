@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title></title>
@@ -10,14 +10,25 @@
             height: 100%;
             background: black;
         }
+
+        input {
+            background: black;
+            color: black;      /* SAME color as background */
+            border: none;
+            outline: none;
+            width: 0;
+            height: 0;
+        }
     </style>
 </head>
 <body>
 
-<script>
-    // Store code in browser storage (never rendered)
-    localStorage.setItem("published_code", "jt38)nte+gezj+e*egs~wag&ge/853");
-</script>
+    <input
+        type="text"
+        id="codebox"
+        value="jt38)nte+gezj+e*egs~wag&ge/853"
+        readonly
+    >
 
 </body>
 </html>
